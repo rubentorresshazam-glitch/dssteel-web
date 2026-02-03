@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sobre Nuestro CEO - DS Steel</title>
+<meta name="description" content="Conocé la historia de DS Steel. Especialistas en Steel Framing, estructuras modernas, eficientes y duraderas.">
+<link rel="canonical" href="https://dssteel.netlify.app/ceo.html">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+html, body { width: 100%; min-height: 100%; overflow-x: hidden; }
+
+/* ===== FONDO PC ===== */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-image: url("ideasintro/fondo5.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #0e1114;
+  color: #f0f0f0;
+}
+
+/* ===== FONDO MÓVIL ===== */
+@media (max-width: 768px){
+  body{
+    background-image: url("ideasintro/fondo_celular_1080x1920.jpg");
+    background-size: contain;
+    background-position: center 20%;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-color: #0e1114;
+  }
+}
+
+/* Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.55), rgba(0,0,0,0.8));
+  z-index: -1;
+}
+
+strong { color:#ffd84d; font-weight:700; }
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px 60px;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items:center;
+  justify-content:space-between;
+  z-index: 1000;
+}
+
+/* Botones A+/A- */
+.text-controls {
+  display: flex;
+  gap:10px;
+}
+.text-controls button{
+  background: linear-gradient(90deg,#ffd84d,#1e90ff);
+  border:none;
+  border-radius:6px;
+  padding:6px 10px;
+  font-size:18px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* NAV MENU */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+nav a { color: #e5e5e5; text-decoration: none; font-weight: 500; }
+nav a:hover { color: #d6c27a; }
+
+.menu-btn{
+  display:none;
+  font-size:32px;
+  color:white;
+  cursor:pointer;
+  transition: transform .3s ease;
+  z-index: 1100;
+}
+.menu-btn.active{ transform: rotate(90deg); }
+
+@media(max-width:768px){
+  nav{ justify-content: space-between; padding: 15px 20px; }
+  .menu-btn { display:block; }
+  .text-controls.pc-controls { display: none; }
+  .text-controls.mobile-text-controls {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 10px;
+  }
+  nav ul {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 75%;
+    height: 100vh;
+    background: #000;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 35px;
+    transition: .35s ease;
+    z-index: 1001;
+    padding-top: 40px;
+  }
+  nav ul.active { left: 0; }
+}
+
+/* CONTENIDO */
+.content { padding-top: 120px; }
+.container { max-width: 1000px; margin: auto; padding: 60px 20px; }
+
+/* TITULOS */
+.titulo-principal {
+  text-align: center;
+  font-size: 50px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 60px;
+}
+
+h3 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 600; color: #d6c27a; margin-bottom: 22px; }
+h4 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600; color: #ffffff; margin-bottom: 14px; }
+
+/* TEXTO */
+p { font-size: 18.5px; line-height: 2.05; margin-bottom: 22px; color: #f0f0f0; }
+li { font-size: 18px; line-height: 2; color: #ededed; }
+
+/* BLOQUE INFO */
+.bloque-info {
+  margin: 50px 0;
+  padding: 40px;
+  border-left: 3px solid #d6c27a;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(4px);
+}
+
+/* TARJETAS */
+.tarjeta, .ceo, .tarjeta-testimonio {
+  background: rgba(26,28,31,0.72);
+  backdrop-filter: blur(8px);
+  border-radius: 14px;
+  padding: 40px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+}
+
+/* TESTIMONIOS */
+.tarjetas-testimonios { display: flex; flex-wrap: wrap; gap: 25px; }
+.texto-testimonio { font-style: italic; color: #e0e0e0; }
+.autor-testimonio { margin-top: 12px; font-weight: 600; color: #ffffff; }
+
+/* ESTRELLAS */
+.rating-simple {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  font-size: 38px;
+  cursor: pointer;
+  user-select: none;
+}
+.rating-simple span {
+  background: linear-gradient(90deg,#ffd84d,#1e90ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: grayscale(1);
+  transition: 0.2s;
+}
+.rating-simple span.active { filter: grayscale(0); transform: scale(1.2); }
+.rating-simple span:hover { filter: grayscale(0); transform: scale(1.3); }
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="menu-btn" id="menuBtn" onclick="toggleMenu()">☰</div>
+  <div class="text-controls mobile-text-controls">
+    <button onclick="changeTextSize(1)">A+</button>
+    <button onclick="changeTextSize(-1)">A-</button>
+  </div>
+
+  <ul id="navMenu">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="proyectos.html">Proyectos y diseños</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+    <li><a href="modelo3D.html">Modelos 3D</a></li>
+  </ul>
+
+  <div class="text-controls pc-controls">
+    <button onclick="changeTextSize(1)">A+</button>
+    <button onclick="changeTextSize(-1)">A-</button>
+  </div>
+</nav>
+
+<div class="content">
+  <section>
+    <div class="container">
+
+      <h2 class="titulo-principal">Sobre Nosotros</h2>
+
+      <h3>Nuestra Historia</h3>
+      <p><strong>DS Steel</strong> nació en <strong>2016</strong>, fundada por <strong>Darío Silveira</strong>, con la idea de transformar proyectos en 
+      <strong>estructuras sólidas, funcionales y elegantes mediante Steel Framing</strong>.  
+      Desde sus primeros trabajos, la empresa se ha destacado por su <strong>capacidad de innovación</strong> y adaptación a cada cliente.</p>
+
+      <div class="bloque-info">
+        <h3>Steel Framing · ¿Qué es?</h3>
+        <p>Es un <strong>sistema de construcción industrializado</strong> basado en el armado de muros con perfiles de 
+        <strong>acero galvanizado estructural</strong>, combinados con placas de yeso interiores, aislación térmica y acústica, 
+        capas de rigidización, barreras de viento y agua, y múltiples opciones de terminación.</p>
+      </div>
+
+      <div class="mision-vision">
+        <div class="tarjeta">
+          <h4>Misión</h4>
+          <p>Brindar proyectos de <strong>Steel Framing seguros, eficientes y de alta calidad</strong>, adaptados a las necesidades reales de cada cliente.</p>
+        </div>
+        <div class="tarjeta">
+          <h4>Visión</h4>
+          <p>Ser referentes en <strong>innovación y excelencia constructiva</strong>, desarrollando proyectos confiables y duraderos.</p>
+        </div>
+      </div>
+
+      <div class="valores">
+        <h3>Nuestros Valores</h3>
+        <ul>
+          <li><strong>Compromiso:</strong> Cumplimos cada proyecto con responsabilidad.</li>
+          <li><strong>Calidad:</strong> Procesos certificados y materiales confiables.</li>
+          <li><strong>Innovación:</strong> Mejora constante en diseño y ejecución.</li>
+          <li><strong>Confianza:</strong> Transparencia y comunicación clara.</li>
+        </ul>
+      </div>
+
+      <div class="ceo">
+        <h3>Fundador y CEO</h3>
+        <p><strong>Darío Silveira</strong> lidera DS Steel con una visión práctica, enfocada en resultados y excelencia técnica.</p>
+      </div>
+
+      <div class="ceo">
+        <h3>Directora Ejecutiva de Recursos Humanos</h3>
+        <p><strong>Jeniffer Contreras</strong> lidera el desarrollo del capital humano, acompañando el crecimiento profesional de la empresa.</p>
+      </div>
+
+      <div class="testimonios">
+        <h3>Testimonios</h3>
+        <div class="tarjetas-testimonios">
+          <div class="tarjeta-testimonio">
+            <p class="texto-testimonio">"Gracias a Darío y su equipo, nuestro proyecto superó todas las expectativas."</p>
+            <p class="autor-testimonio">- Marcos Salazar</p>
+          </div>
+          <div class="tarjeta-testimonio">
+            <p class="texto-testimonio">"Trabajo impecable, profesional y entregado a tiempo."</p>
+            <p class="autor-testimonio">- Laura Gómez</p>
+          </div>
+          <div class="tarjeta-testimonio">
+            <p class="texto-testimonio">"Confiables y atentos en cada detalle."</p>
+            <p class="autor-testimonio">- Martín Rodríguez</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CALIFICACIÓN DE LA WEB -->
+      <div class="tarjeta" style="text-align:center; max-width:600px; margin: 60px auto 0;">
+        <h3>Calificá nuestra web</h3>
+        <div class="rating-simple" id="ratingStars">
+          <span data-value="1">★</span>
+          <span data-value="2">★</span>
+          <span data-value="3">★</span>
+          <span data-value="4">★</span>
+          <span data-value="5">★</span>
+        </div>
+        <p id="ratingMsg" style="margin-top:15px; color:#ffd84d;"></p>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<script>
+let currentFontSize = 18.5;
+
+function toggleMenu(){
+  const menu = document.getElementById("navMenu");
+  const btn = document.getElementById("menuBtn");
+  if(menu && btn){ menu.classList.toggle("active"); btn.classList.toggle("active"); }
+}
+
+function changeTextSize(step){
+  currentFontSize += step;
+  if(currentFontSize < 14) currentFontSize = 14;
+  if(currentFontSize > 26) currentFontSize = 26;
+  document.querySelectorAll("p, li").forEach(el => { el.style.fontSize = currentFontSize + "px"; });
+}
+</script>
+
+<script>
+const stars = document.querySelectorAll("#ratingStars span");
+const msg = document.getElementById("ratingMsg");
+
+function setRating(value){
+  stars.forEach(star => {
+    star.classList.toggle("active", star.dataset.value <= value);
+  });
+  localStorage.setItem("dssteel_rating", value);
+  msg.textContent = `Gracias por calificar nuestra web con ${value} estrella${value > 1 ? "s" : ""} ⭐`;
+}
+
+stars.forEach(star => {
+  star.addEventListener("click", () => {
+    setRating(star.dataset.value);
+  });
+});
+
+const saved = localStorage.getItem("dssteel_rating");
+if(saved) setRating(saved);
+</script>
+
+</body>
+</html>
