@@ -6,7 +6,10 @@ const EMAIL_EMPRESA = process.env.EMAIL_EMPRESA;
 export async function handler(event) {
   try {
     if (event.httpMethod !== "POST") {
-      return { statusCode: 405, body: "Método no permitido" };
+      return {
+        statusCode: 405,
+        body: "Método no permitido"
+      };
     }
 
     const { nombre, email, mensaje } = JSON.parse(event.body || "{}");
@@ -16,7 +19,7 @@ export async function handler(event) {
     }
 
     await resend.emails.send({
-      from: EMAIL_EMPRESA,
+      from: "DS Steel <onboarding@resend.dev>",  // 👈 IMPORTANTE
       to: EMAIL_EMPRESA,
       subject: `Nuevo mensaje desde la web de DS Steel: ${nombre}`,
       html: `
@@ -32,6 +35,7 @@ export async function handler(event) {
       statusCode: 200,
       body: JSON.stringify({ ok: true })
     };
+
   } catch (error) {
     console.error("ERROR FUNCTION:", error);
     return {
